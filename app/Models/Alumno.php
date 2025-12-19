@@ -16,6 +16,28 @@ class Alumno extends Model
         'cedula',
         'telefono',
         'tipo_licencia',
-        'estado',
+        'estado'
     ];
+
+    /* ===== LÓGICA DEL NEGOCIO ===== */
+
+    public static function obtenerTodos()
+    {
+        return self::orderBy('created_at', 'desc')->get();
+    }
+
+    public static function crearAlumno(array $datos)
+    {
+        return self::create($datos);
+    }
+
+    public function actualizarAlumno(array $datos)
+    {
+        return $this->update($datos);
+    }
+
+    public function eliminarAlumno()
+    {
+        return $this->delete(); // borrado lógico
+    }
 }
